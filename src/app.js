@@ -13,6 +13,7 @@ import config from "./config/config.js";
 import { addLogger } from "./middlewares/logger.js";
 import { logger } from "./utils.js";
 import cookieParser from "cookie-parser";
+import { swaggerConfig } from "./swagger.js";
 
 // Initialization
 const { DB_USER, DB_PASS, DB_NAME, DB_URL, SESSION_SECRET } = config;
@@ -23,6 +24,7 @@ const PORT = 3000;
 app.engine("handlebars", handlebars.engine());
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "handlebars");
+swaggerConfig(app);
 
 //Instance handlebars for registering a helper
 const hbs = handlebars.create({});
